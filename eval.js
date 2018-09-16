@@ -8,11 +8,14 @@ const rEval = (filePath, pathToResolve) => {
         if (!path.extname(filePath)) {
             filePath += '.js';
         }
-        const data = fs.readFileSync(path.resolve(pathToResolve, filePath), 'utf-8');
+        filePath = path.resolve(pathToResolve, filePath);
 
+        const data = fs.readFileSync(filePath, 'utf-8');
         const dir = path.dirname(filePath);
 
         return nEval(data, filePath, { require: (p) => rEval(p, dir) });
+    } else {
+        return require(filePath);
     }
 }
 

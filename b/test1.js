@@ -1,4 +1,5 @@
+const path = require('path');
 
 module.exports = {
-    hello: () => 'from B!'
+    hello: () => path.join('from', 'B')
 }
