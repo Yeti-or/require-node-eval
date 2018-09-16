@@ -24,5 +24,6 @@ const data = fs.readFileSync(filePath, 'utf-8');
 
 const hi = nEval(data, filePath, { require: (p) => rEval(p, './b') });
 
-console.log('hi!', hi);
+console.log('rEval: ', hi);
+console.log('require: ', require(filePath));
 
